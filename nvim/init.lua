@@ -42,7 +42,6 @@ require('lazy').setup({
       'folke/neodev.nvim',
     },
   },
-
   {
     -- Autocompletion
     'hrsh7th/nvim-cmp',
@@ -58,15 +57,6 @@ require('lazy').setup({
       -- Adds a number of user-friendly snippets
       'rafamadriz/friendly-snippets',
     },
-  },
-  {
-    -- Auto close parentheses/brackets/etc
-    'm4xshen/autoclose.nvim',
-    opts = {
-      escape = true,
-      close = true,
-      pair = true
-    }
   },
 
   -- Useful plugin to show you pending keybinds.
@@ -170,8 +160,17 @@ require('lazy').setup({
 
       -- Only set one of the below backgrounds (or don't)
       -- Sets background to transparent so we can use terminal background ":BackgroundNone"
-      vim.api.nvim_set_hl(0, "Normal", { })
-      vim.api.nvim_set_hl(0, "NormalFloat", { })
+      vim.api.nvim_set_hl(0, "Normal", {})
+      vim.api.nvim_set_hl(0, "NormalNC", {})
+      vim.api.nvim_set_hl(0, "NormalFloat", {})
+      vim.api.nvim_set_hl(0, "SignColumn", {})
+
+      -- Neotree BG sets
+      vim.api.nvim_set_hl(0, "NeotreeNormal", {})
+      vim.api.nvim_set_hl(0, "NeoTreeNormalNC", {})
+      vim.api.nvim_set_hl(0, "NeoTreeVertSplit", {})
+      vim.api.nvim_set_hl(0, "NeoTreeFloatBorder", {})
+      vim.api.nvim_set_hl(0, "NeoTreeSignColumn", {})
 
       -- Sets background to a darker color ":Background"
       -- vim.api.nvim_set_hl(0, "Normal", { fg = "#d0d0d0", bg = "#000001" })
@@ -236,8 +235,8 @@ require('lazy').setup({
 
   {
     'mbbill/undotree',
+    vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle),
   },
-  vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle),
 
   --TODO: Eventually move these to custom once I have configured them
   require 'kickstart.plugins.autoformat',
@@ -295,13 +294,21 @@ vim.o.termguicolors = true
 
 vim.api.nvim_create_user_command('BackgroundNone',
   function()
-    vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-    vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+    vim.api.nvim_set_hl(0, "Normal", {})
+    vim.api.nvim_set_hl(0, "NormalNC", {})
+    vim.api.nvim_set_hl(0, "NormalFloat", {})
+    vim.api.nvim_set_hl(0, "SignColumn", {})
+
+    -- Neotree BG sets
+    vim.api.nvim_set_hl(0, "NeotreeNormal", {})
+    vim.api.nvim_set_hl(0, "NeoTreeNormalNC", {})
+    vim.api.nvim_set_hl(0, "NeoTreeVertSplit", {})
+    vim.api.nvim_set_hl(0, "NeoTreeFloatBorder", {})
+    vim.api.nvim_set_hl(0, "NeoTreeSignColumn", {})
   end, {})
 vim.api.nvim_create_user_command('Background',
   function()
-    vim.api.nvim_set_hl(0, "Normal", { fg = "#c0caf5", bg = "#1a1b26" })
-    vim.api.nvim_set_hl(0, "NormalFloat", { fg = "#c0caf5", bg = "#1a1b26" })
+    vim.cmd.colorscheme 'tokyonight-storm'
   end, {})
 
 
