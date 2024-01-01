@@ -256,6 +256,12 @@ vim.o.incsearch = true
 vim.wo.number = true
 vim.wo.relativenumber = true
 
+-- 4 space tabs
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
+
 -- Never have less than 8 lines to edge of screen (unless there aren't at least 8 lines)
 vim.opt.scrolloff = 8
 
@@ -332,6 +338,9 @@ vim.keymap.set('n', 'N', 'Nzzzv')
 -- Remap to allow moving lines you have highlighted
 vim.keymap.set('v', 'J', ':m \'>+1<CR>gv=gv')
 vim.keymap.set('v', 'K', ':m \'<-2<CR>gv=gv')
+-- Remap to allow indenting and unindenting of lines you have highlighted
+vim.keymap.set('v', '<Tab>', '>gv')
+vim.keymap.set('v', '<S-Tab>', '<gv')
 
 -- Remap which allows you to paste without copying into current register
 vim.keymap.set('x', '<leader>p', '"_dP')
@@ -582,6 +591,8 @@ require('mason-lspconfig').setup()
 local servers = {
   rust_analyzer = {},
   html = { filetypes = { 'html', 'twig', 'hbs' } },
+  templ = {},
+  go = {},
 
   lua_ls = {
     Lua = {
