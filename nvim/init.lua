@@ -239,7 +239,7 @@ require('lazy').setup({
   },
 
   --TODO: Eventually move these to custom once I have configured them
-  require 'kickstart.plugins.autoformat',
+  -- require 'kickstart.plugins.autoformat',
   require 'kickstart.plugins.debug',
 
   { import = 'custom.plugins' },
@@ -257,10 +257,10 @@ vim.wo.number = true
 vim.wo.relativenumber = true
 
 -- 4 space tabs
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
-vim.opt.shiftwidth = 4
-vim.opt.expandtab = true
+vim.o.tabstop = 4
+vim.o.softtabstop = 4
+vim.o.shiftwidth = 4
+vim.o.expandtab = true
 
 -- Never have less than 8 lines to edge of screen (unless there aren't at least 8 lines)
 vim.opt.scrolloff = 8
@@ -459,7 +459,7 @@ vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = 
 vim.defer_fn(function()
   require('nvim-treesitter.configs').setup {
     -- Add languages to be installed here that you want installed for treesitter
-    ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'javascript', 'typescript', 'vimdoc', 'vim', 'bash' },
+    ensure_installed = { 'templ', 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'javascript', 'typescript', 'vimdoc', 'vim', 'bash' },
 
     -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
     auto_install = false,
@@ -523,6 +523,11 @@ vim.defer_fn(function()
 end, 0)
 
 -- [[ Configure LSP ]]
+vim.filetype.add({
+  extension = {
+    templ = "templ",
+  },
+})
 --  This function gets run when an LSP connects to a particular buffer.
 local on_attach = function(_, bufnr)
   -- In this case, we create a function that lets us more easily define mappings specific
@@ -590,16 +595,19 @@ require('mason-lspconfig').setup()
 --  field of the server config
 local servers = {
   rust_analyzer = {},
-  html = { filetypes = { 'html', 'twig', 'hbs' } },
-  templ = {},
-  go = {},
+  html = { filetypes = { 'html', 'twig', 'hbs', 'templ' } },
+  templ = { filetypes = { 'templ' } },
 
   lua_ls = {
     Lua = {
       workspace = { checkThirdParty = false },
       telemetry = { enable = false },
       -- ignore Lua_LS's noisy `missing-fields` warnings
-      diagnostics = { disable = { 'missing-fields' } },
+      diagnostics = {
+        disable = { 'missing-fields' },
+        -- Get the language server to recognize the `vim` global
+        globals = { "vim" },
+      },
     },
   },
 }
