@@ -29,7 +29,7 @@ export NVM_DIR="$HOME/.nvm"
 
 
 alias lsa="ls -a"
-alias homegit='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 # Set the path for NVIM and add nvim as the default git editor
 export PATH="$PATH:/opt/nvim-linux64/bin"
