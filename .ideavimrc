@@ -1,0 +1,187 @@
+let mapleader=" "
+
+" You know...
+set clipboard+=unnamed
+
+set scrolloff=8
+set incsearch
+" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+" Not sure what these are for. But they're from my previous config
+set surround
+set commentary
+set argtextobj
+set textobj-entire
+set ReplaceWithRegister
+set exchange
+set showmode
+set number
+" no relative numbers
+set nornu
+set ideajoin
+
+" was gray
+set ideastatusicon=blue
+
+" My love
+set which-key
+" Makes my love work
+set notimeout
+
+" Might need to get rid of at some point
+let g:WhichKey_ShowVimActions           = "true"
+" slow it down a bit
+let g:WhichKey_DefaultDelay             = 300
+let g:WhichKey_SortOrder                = "by_description"
+let g:WhichKey_SortCaseSensitive        = "false"
+let g:WhichKey_FontFamily               = "JetBrains Mono"
+let g:WhichKey_FontSize                 = 22
+let g:WhichKey_KeyStyle                 = "bold"
+let g:WhichKey_KeyColor                 = "#00cccc"
+let g:WhichKey_PrefixStyle              = "italic"
+let g:WhichKey_PrefixColor              = "keyword"
+let g:WhichKey_CommandColor             = ""
+" NO DASHES - g:WhichKeyDesc_[a-zA-Z0-9_]+
+let g:WhichKeyDesc_code                 = "<leader>c +code"
+let g:WhichKeyDesc_code_action          = "<leader>ca actions"
+" this one not working dunno why
+let g:WhichKeyDesc_callhierarchy        = "<leader>C call hierarchy"
+let g:WhichKeyDesc_voiddelete           = "<leader>d void delete"
+let g:WhichKeyDesc_breakpoint           = "<leader>b toggle breakpoint"
+let g:WhichKeyDesc_debug                = "<leader>D debug current config"
+let g:WhichKeyDesc_showerror            = "<leader>e show error"
+let g:WhichKeyDesc_highlightusages      = "<leader>h highlight usages"
+let g:WhichKeyDesc_refactor             = "<leader>r +refactor"
+let g:WhichKeyDesc_refactor_quicklist   = "<leader>rf refactor quicklist"
+let g:WhichKeyDesc_refactor_rename      = "<leader>rn rename"
+let g:WhichKeyDesc_refactor_resource    = "<leader>rs resource ideavimrc"
+let g:WhichKeyDesc_reload_from_disk     = "<leader>R reload from disk"
+let g:WhichKeyDesc_spotless             = "<leader>S spotless Apply"
+let g:WhichKeyDesc_zen                  = "<leader>z ZEN"
+let g:WhichKeyDesc_zen_zen              = "<leader>ze ZEN"
+let g:WhichKeyDesc_zen_zen_zen          = "<leader>zen ZEN"
+"" TODO: Add whichkeys for easymotion
+
+" File system
+set NERDTree
+"map \ :NERDTree<CR>
+map \ :NERDTreeFocus<CR>
+
+" Highlights good characters to f/F/t/T to
+set quickscope
+" ensure it only highlights after pressing relevant keys
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+" flash(neovim) copy?
+set easymotion
+" Easy motion bindings
+map <leader>f <Plug>(easymotion-f)
+map <leader>F <Plug>(easymotion-F)
+map <leader>t <Plug>(easymotion-t)
+map <leader>T <Plug>(easymotion-T)
+map <leader>w <Plug>(easymotion-w)
+map <leader>W <Plug>(easymotion-W)
+
+" --- Enable IdeaVim plugins https://jb.gg/ideavim-plugins
+" Not supposed to be needed anymore -- testing quickscope instead
+"Plug 'justinmk/vim-sneak'
+" Highlight copied text
+Plug 'machakann/vim-highlightedyank'
+" Commentary plugin
+Plug 'tpope/vim-commentary'
+
+" Looks like this is for which characters we like to auto pair?
+let g:argtextobj_pairs="[:],(:),<:>"
+" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+" Tab/S-Tab to indent/unindent selection
+vmap <Tab> >gv
+vmap <S-Tab> <gv
+" IIRC This is to enable escaping from terminal mode with just tapping esc, unsure if this is even used in ideavim
+tnoremap <Esc> <C-\><C-n>
+
+" Enables jumping through tabs with Shift-h/Shift-l
+nmap <S-h> <Action>(PreviousTab)
+nmap <S-l> <Action>(NextTab)
+
+" (F)ind file (sneak/flash) -- testing quickscope instead -- CURRENTLY DOES NOT WORK BECAUSE IDEAVIM_SNEAK IS NOT COMPATIBLE
+"map f <Plug>Sneak_s
+"map F <Plug>Sneak_S
+
+" Next/Previous (E)rror
+nmap ]e <Action>(GotoNextError)
+nmap [e <Action>(GotoPreviousError)
+
+" (G)o (B)ack / (F)orward
+nmap gb <Action>(Back)
+nmap gf <Action>(Forward)
+" (G)o to (D)eclaration
+nmap gD <Action>(GotoTypeDeclaration)
+
+" Ignore the if unless we're using rider, apparently rider has some special issues
+if &ide =~? 'rider'
+  nmap <leader>C <Action>(RiderShowIncomingCalls)
+else
+  nmap <leader>C <Action>(CallHierarchy)
+endif
+
+" Move current selection up or down
+vmap K :m '<-2<CR>gv=gv
+vmap J :m '>+1<CR>gv=gv
+
+" ? void delete I think
+map <leader>d "_d
+" Need to use more
+map <leader>D <Action>(Debug)
+map <leader>b <Action>(ToggleLineBreakpoint)
+" ? Cancel idk
+"map <leader>C <Action>(Stop)
+map <leader>zen <Action>(ToggleDistractionFreeMode)
+map <leader>rs :action IdeaVim.ReloadVimRc.reload<CR>
+map <leader>e <Action>(ShowErrorDescription)
+map <C-y> <Action>(EditorEnter)
+
+" Ignore note
+" These don't work in Rider, annoyingly. Try HighlightUsagesInFile (see <leader>h below)
+nmap ]q <Action>(GotoNextElementUnderCaretUsage)
+nmap [q <Action>(GotoPrevElementUnderCaretUsage)
+
+" Highlight usages, use CMD+G/Shift+CMD+G to iterate
+nmap <leader>h <Action>(HighlightUsagesInFile)
+
+" (R)e(f)actor
+nmap <leader>rf <Action>(Refactorings.QuickListPopupAction)
+xmap <leader>rf <Action>(Refactorings.QuickListPopupAction)
+
+" (S)potless
+nnoremap <silent> <leader>S :action SaveAll\|:!mvn spotless:apply<CR>
+" (R)eload
+nmap <leader>R <Action>(Synchronize)
+
+" (R)e(n)ame
+nmap <leader>rn <Action>(RenameElement)
+xmap <leader>rn <Action>(RenameElement)
+
+" <CR>
+"nnoremap <leader>ca <Action>(ShowIntentionAction)
+nmap <leader>ca <Action>(ShowIntentionActions)
+vmap <leader>ca <Action>(ShowIntentionActions)
+
+" TODO: What the heck is this?
+" Don't use Ex mode, use Q for formatting.
+map Q gq
+
+" --- Enable IdeaVim plugins https://jb.gg/ideavim-plugins
+" Highlight copied text
+Plug 'machakann/vim-highlightedyank'
+" Commentary plugin
+Plug 'tpope/vim-commentary'
+
+
+"" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t
+"" Map \r to the Reformat Code action
+"map \r <Action>(ReformatCode)
+
+"" Map <leader>d to start debug
+"map <leader>d <Action>(Debug)
+
+"" Map \b to toggle the breakpoint on the current line
+"map \b <Action>(ToggleLineBreakpoint)

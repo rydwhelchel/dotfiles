@@ -1,0 +1,70 @@
+[
+  // TODO:
+  // add rename (leader r) editor:rename & editor: confirm rename?
+  {
+    "context": "Editor && vim_mode == normal && vim_operator == none && !VimWaiting",
+    "bindings": {
+      // Leader commands
+      // [R]ename
+      "space r n": "editor::Rename",
+      // show [E]rror (identical to shift-k)
+      "space e": "editor::Hover",
+      // show [C]ode [A]ctions
+      "space c a": "editor::ToggleCodeActions",
+      "space x": "pane::CloseActiveItem",
+      // toggle dock, similar to my oil.nvim bind
+      "space n": "workspace::ToggleLeftDock",
+      // [G]o to [R]eferences
+      "g r": "editor::FindAllReferences",
+
+      "shift-h": "pane::ActivatePreviousItem",
+      "shift-l": "pane::ActivateNextItem"
+      // Would be nice to figure out if I can make it auto swap to previously active
+      // window instead of file tree
+      // "space e": "workspace::ToggleLeftDock"
+    }
+  },
+  // Allow swapping active window via ctrl-<dir> at anytime, anywhere (I think) except insert
+  {
+    "context": "Workspace || VimControl",
+    "bindings": {
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "cmd-[": "workspace::ActivatePaneUp",
+      "ctrl-j": "workspace::ActivatePaneDown",
+      "cmd-]": "workspace::ActivatePaneDown",
+      "ctrl-y": "menu::Confirm"
+    }
+  },
+  {
+    "context": "VimControl && !menu || vim_mode == insert",
+    // stop the annoying open/close project when trying to esc
+    "bindings": {
+      "shift-escape": "vim::SwitchToNormalMode"
+    }
+  },
+  {
+    "context": "vim_mode == visual",
+    // currently reselecting previous visual doesn't work as expected
+    "bindings": {
+      "tab": ["workspace::SendKeystrokes", "> g v"],
+      "shift-tab": ["workspace::SendKeystrokes", "< g v"]
+    }
+  },
+  // Allow j and k to navigate code actions
+  {
+    "context": "Editor && showing_code_actions",
+    "bindings": {
+      "ctrl-j": "editor::ContextMenuNext",
+      "ctrl-k": "editor::ContextMenuPrevious",
+      "ctrl-y": "editor::ConfirmCodeAction"
+    }
+  },
+  {
+    "context": "Editor && showing_completions",
+    "bindings": {
+      "ctrl-y": "editor::ConfirmCompletion"
+    }
+  }
+]

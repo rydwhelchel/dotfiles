@@ -1,0 +1,57 @@
+[
+  // TODO:
+  // add rename (leader r) editor:rename & editor: confirm rename?
+  {
+    "context": "Editor && vim_mode == normal && vim_operator == none && !VimWaiting",
+    "bindings": {
+      // Leader commands
+      // [R]ename
+      "space r": "editor::Rename",
+      // show [E]rror (identical to shift-k)
+      "space e": "editor::Hover",
+      // show [C]ode [A]ctions
+      "space c a": "editor::ToggleCodeActions",
+      // [G]o to [R]eferences
+      "g r": "editor::FindAllReferences",
+
+      "shift-h": "pane::ActivatePrevItem",
+      "shift-l": "pane::ActivateNextItem"
+      // Would be nice to figure out if I can make it auto swap to previously active
+      // window instead of file tree
+      // "space e": "workspace::ToggleLeftDock"
+    }
+  },
+  // Allow swapping active window via ctrl-<dir> at anytime, anywhere (I think) except insert
+  {
+    "context": "Workspace || VimControl",
+    "bindings": {
+      "ctrl-h": ["workspace::ActivatePaneInDirection", "Left"],
+      "ctrl-l": ["workspace::ActivatePaneInDirection", "Right"],
+      "ctrl-k": ["workspace::ActivatePaneInDirection", "Up"],
+      "ctrl-j": ["workspace::ActivatePaneInDirection", "Down"]
+    }
+  },
+  {
+    "context": "VimControl && !menu || vim_mode == insert",
+    // stop the annoying open/close project when trying to esc
+    "bindings": {
+      "shift-escape": ["vim::SwitchMode", "Normal"]
+    }
+  },
+  {
+    "context": "vim_mode == visual",
+    // currently reselecting previous visual doesn't work as expected
+    "bindings": {
+      "tab": ["workspace::SendKeystrokes", "> g v"],
+      "shift-tab": ["workspace::SendKeystrokes", "< g v"]
+    }
+  },
+  // Allow j and k to navigate code actions
+  {
+    "context": "Editor && (showing_code_actions || showing_completions)",
+    "bindings": {
+      "ctrl-j": "editor::ContextMenuNext",
+      "ctrl-k": "editor::ContextMenuPrev"
+    }
+  }
+]
