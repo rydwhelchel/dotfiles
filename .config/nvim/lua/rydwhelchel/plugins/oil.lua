@@ -26,6 +26,7 @@ return {
         ['<C-p>'] = 'actions.preview',
         ['q'] = 'actions.close',
         ['<C-l>'] = 'actions.refresh',
+        ['K'] = 'actions.parent',
         ['-'] = 'actions.parent',
         ['_'] = 'actions.open_cwd',
         ['`'] = 'actions.cd',
