@@ -15,14 +15,14 @@ keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>', { desc = 'Clear search highlight
 keymap.set('n', '<leader>+', '<C-a>', { desc = 'Increment number' })
 keymap.set('n', '<leader>-', '<C-x>', { desc = 'Decrement number' })
 
--- NOTE: Reference
--- map('n', ']c', function()
---   if vim.wo.diff then
---     vim.cmd.normal { ']c', bang = true }
---   else
---     gitsigns.nav_hunk 'next'
---   end
--- end, { desc = 'Jump to next git [c]hange' })
+vim.api.nvim_create_user_command('PrintDateTime', function()
+  vim.cmd('spl ~/Notes/' .. os.date '%b-%d-%Y - %H.%M.%S' .. '.md')
+  vim.cmd 'resize -10'
+end, {})
+-- TODO: Capital N for now, later maybe make a notes prefix. Consider remapping oil from space n
+keymap.set('n', '<leader>N', function()
+  vim.cmd.PrintDateTime()
+end, { desc = 'Create new note and switch to it' })
 
 -- [[ Splits ]]
 keymap.set('n', '<leader>sv', '<C-w>v', { desc = '[S]plit window [V]ertically' })
@@ -33,6 +33,7 @@ keymap.set('n', '<leader>sk', '<C-w>+', { desc = '[S]plit make taller - use moti
 keymap.set('n', '<leader>ss', '<C-w><', { desc = '[S]plit [S]hrink - use motion' })
 keymap.set('n', '<leader>sw', '<C-w>>', { desc = '[S]plit [W]iden - use motion' })
 keymap.set('n', '<leader>sx', '<C-w>q', { desc = '[S]plit e[X]it - closes current split' })
+keymap.set('n', '<leader>sc', '<C-w>q', { desc = '[S]plit [C]lose - closes current split' })
 
 -- Make j and k navigate wrapped lines correctly
 keymap.set('n', 'j', 'gj')
@@ -61,7 +62,6 @@ keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window'
 
 -- TODO: Move this to oil setup
 -- oil.nvim setup
-keymap.set('n', '<leader>N', ':Oil<CR>', { desc = 'Open Oil' })
 keymap.set('n', '<leader>n', ':lua require("oil").toggle_float()<CR>', { desc = 'Open Oil' })
 
 -- Close buffer

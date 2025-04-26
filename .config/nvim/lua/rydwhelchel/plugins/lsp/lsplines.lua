@@ -1,0 +1,11 @@
+return {}
+-- -- Adds cool diagnostics on virtual lines
+-- return {
+--   'https://git.sr.ht/~whynothugo/lsp_lines.nvim',
+--   config = function()
+--     require('lsp_lines').setup()
+--
+--     -- lsplines toggle
+--     vim.keymap.set('', '<leader>ll', require('lsp_lines').toggle, { desc = 'Toggle [l]sp_[l]ines' })
+--   end,
+-- }
