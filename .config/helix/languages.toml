@@ -1,0 +1,11 @@
+# Java config below taken from https://gh.jdoneill.com/2025/01/06/helix-jvm-setup/
+[language-server.jdtls]
+command = "jdtls"
+args = ["-data", "~/.cache/jdtls/workspace"]
+
+[[language]]
+name = "java"
+scope = "source.java"
+file-types = ["java"]
+roots = ["pom.xml", "build.gradle", ".git"]
+language-servers = ["jdtls"]  

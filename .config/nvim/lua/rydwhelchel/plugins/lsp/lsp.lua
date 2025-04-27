@@ -168,6 +168,7 @@ return {
       emmet_ls = {
         filetypes = { 'html', 'typescriptreact', 'javascriptreact', 'css', 'sass', 'scss', 'less', 'svelte' },
       },
+      -- gleam = {}, -- RUDE LSP
       gopls = {},
       graphql = {
         filetypes = { 'graphql', 'gql', 'svelte', 'typescriptreact', 'javascriptreact' },
@@ -189,6 +190,11 @@ return {
           },
         },
       },
+      nil_ls = {
+        formatting = {
+          command = { "nixfmt" },
+        },
+      },
       pyright = {},
       rust_analyzer = {},
       svelte = {
@@ -208,6 +214,10 @@ return {
       -- Zig LS
       zls = {},
     }
+
+    -- ~~~ START RUDE LSPS ~~~
+    require('lspconfig').gleam.setup({})
+    -- ~~~ END RUDE LSPS   ~~~
 
     require('mason').setup {
       ui = {
