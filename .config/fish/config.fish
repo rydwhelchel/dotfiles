@@ -8,3 +8,4 @@ abbr --a .. cd ..
 abbr --a ... cd ../..
 abbr --a .... cd ../../..
 
+fish_add_path /opt/homebrew/bin
