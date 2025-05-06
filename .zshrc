@@ -56,10 +56,8 @@ alias y='yazi'
 ## [C]argo [p]x
 alias carp='cargo px'
 
-# Set the path for NVIM and add nvim as the default editor
+# Set the path for NVIM 
 export PATH="$PATH:/opt/nvim-linux64/bin"
-export EDITOR=nvim
-export GIT_EDITOR=nvim
 export PATH=~/bin:$PATH
 export PATH=/home/rdub/.cache/rebar3/bin:$PATH
 export PATH=~/go/bin:$PATH
