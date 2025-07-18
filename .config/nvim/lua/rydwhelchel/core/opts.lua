@@ -8,17 +8,17 @@ opt.expandtab = true
 opt.autoindent = true
 opt.breakindent = true -- Maintain indent on wrapping lines
 
-opt.ignorecase = true -- Case-insensitive searching
-opt.smartcase = true -- UNLESS \C or one or more capital letters in search
+opt.ignorecase = true  -- Case-insensitive searching
+opt.smartcase = true   -- UNLESS \C or one or more capital letters in search
 
-opt.cursorline = true -- Show which line your cursor is on
+opt.cursorline = true  -- Show which line your cursor is on
 opt.signcolumn = 'yes' -- Keep signcolumn on by default
 
 -- [[ Themeage ]]
 opt.termguicolors = true -- True terminal colors
-opt.background = 'dark' -- defaults themes to their dark version
+opt.background = 'dark'  -- defaults themes to their dark version
 vim.g.have_nerd_font = true
-opt.number = true -- Make line numbers default
+opt.number = true        -- Make line numbers default
 
 -- Configure how new splits should be opened
 opt.splitright = true
@@ -30,9 +30,9 @@ vim.schedule(function()
   opt.clipboard = 'unnamedplus'
 end)
 
-opt.mouse = 'a' -- Enable mouse mode, can be useful for resizing splits for example!
+opt.mouse = 'a'      -- Enable mouse mode, can be useful for resizing splits for example!
 opt.showmode = false -- Don't show the mode, since it's already in the status line
-opt.undofile = true -- Save undo history
+opt.undofile = true  -- Save undo history
 opt.updatetime = 250 -- Decrease update time
 
 -- Decrease mapped sequence wait time
@@ -43,7 +43,8 @@ opt.timeoutlen = 300
 --  See `:help 'list'`
 --  and `:help 'listchars'`
 opt.list = true
-opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+-- opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+opt.listchars = { tab = '  ', trail = '·', nbsp = '␣' }
 
 -- Preview substitutions live, as you type!
 opt.inccommand = 'split'

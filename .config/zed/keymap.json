@@ -66,5 +66,12 @@
     "bindings": {
       "ctrl-y": "editor::ConfirmCompletion"
     }
+  },
+  {
+    "context": "Editor && inline_completion && !showing_completions",
+    "bindings": {
+      "tab": "editor::Tab",
+      "ctrl-y": "editor::AcceptEditPrediction"
+    }
   }
 ]

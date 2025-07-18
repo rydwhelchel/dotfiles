@@ -179,6 +179,9 @@ return {
       htmx = {
         filetypes = { 'html', 'templ', 'heex' },
       },
+      jdtls = {
+
+      },
       lua_ls = {
         settings = {
           Lua = {
