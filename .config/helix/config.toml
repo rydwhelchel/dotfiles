@@ -1,0 +1,61 @@
+theme = "everblush"
+
+[editor]
+scrolloff = 10 # default 5
+cursorline = true
+completion-timeout = 250 # default 250, time before auto-complete suggestions show, 5 is instant
+completion-trigger-len = 1 # default 2, num of chars before auto-complete shows
+rulers = [90] # column position(s) to show ruler
+bufferline = "multiple" # default never, options always and multiple
+color-modes = true # default false, colors mode indicator
+popup-border = "all"
+
+end-of-line-diagnostics = "hint"
+[editor.inline-diagnostics]
+cursor-line = "warning" # show warnings and errors on the cursorline inline
+
+
+[editor.cursor-shape]
+normal = "block"
+insert = "bar"
+select = "underline"
+
+[editor.file-picker]
+hidden = false # show hidden files
+
+[editor.whitespace.render]
+space = "none"
+tab = "none"
+nbsp = "all"
+nnbsp = "all"
+newline = "all"
+
+[editor.whitespace.characters]
+space = "·"
+nbsp = "⍽"
+nnbsp = "␣"
+tab = "→"
+newline = "⏎"
+
+[editor.indent-guides]
+render = true
+character = "┊" # Some characters that work well: "▏", "┆", "┊", "⸽"
+skip-levels = 1
+
+[keys.normal]
+H = ":buffer-previous"
+L = ":buffer-next"
+V = ["extend_line_below", "select_mode"]
+C-h = "swap_view_left"
+C-l = "swap_view_right"
+C-k = "swap_view_up"
+C-j = "swap_view_down"
+
+# Space mode
+[keys.normal.space]
+x = ":buffer-close"
+
+# Window mode
+[keys.normal.space.w]
+x = "wclose"
+ 

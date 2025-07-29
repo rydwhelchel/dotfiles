@@ -1,12 +1,11 @@
 return {
   --   ~~~~ JOSEANS TOKYO ~~~~
   -- {
-  -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
-  -- 'catppuccin/nvim',
-  -- name = 'catppuccin',
+  --   --If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
+  --   -- 'catppuccin/nvim',
+  --   -- name = 'catppuccin',
   --   'folke/tokyonight.nvim',
   --   name = 'tokyonight-night',
-  --   -- 'folke/tokyonight.nvim',
   --   priority = 1000, -- Make sure to load this before all the other start plugins.
   --   init = function()
   --     -- Load the colorscheme here.
@@ -54,17 +53,48 @@ return {
   --   end,
   -- },
   --  ~~~~ END JOSEANS TOKYO ~~~~
+  -- {
+  --   'Shatur/neovim-ayu',
+  --   name = 'ayu',
+  --   priority = 1000,
+  --   init = function()
+  --     require('ayu').setup({
+  --       mirage = false,  -- Set to `true` to use `mirage` variant instead of `dark` for dark background.
+  --       terminal = true, -- Set to `false` to let terminal manage its own colors.
+  --     })
+  --
+  --     vim.cmd.colorscheme 'ayu'
+  --   end,
+  -- },
+  -- {
+  --   'rebelot/kanagawa.nvim',
+  --   name = 'kanagawa',
+  --   priority = 1000,
+  --   init = function()
+  --     require('kanagawa').setup({})
+  --
+  --     vim.cmd.colorscheme 'kanagawa-dragon'
+  --   end,
+  -- },
+  -- {
+  --   "miikanissi/modus-themes.nvim",
+  --   priority = 1000,
+  --   init = function()
+  --     vim.cmd.colorscheme 'modus'
+  --   end,
+  -- },
+  -- {
+  --   'Yazeed1s/minimal.nvim',
+  --   priority = 1000,
+  --   init = function()
+  --     vim.cmd.colorscheme 'minimal'
+  --   end,
+  -- },
   {
-    'Shatur/neovim-ayu',
-    name = 'ayu',
+    "EdenEast/nightfox.nvim",
     priority = 1000,
     init = function()
-      require('ayu').setup({
-        mirage = false,  -- Set to `true` to use `mirage` variant instead of `dark` for dark background.
-        terminal = true, -- Set to `false` to let terminal manage its own colors.
-      })
-
-      vim.cmd.colorscheme 'ayu'
+      vim.cmd.colorscheme 'carbonfox'
     end,
   },
   {
