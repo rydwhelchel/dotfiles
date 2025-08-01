@@ -1,3 +1,10 @@
+" Plugins
+" AceJump
+" IdeaVim
+" IdeaVim-EasyMotion
+" IdeaVim-Quickscope https://plugins.jetbrains.com/plugin/19417-ideavim-quickscope
+" Which-Key
+
 let mapleader=" "
 
 " You know...
