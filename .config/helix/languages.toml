@@ -18,3 +18,20 @@ file-types = ["slint"]
 indent = { tab-width = 2, unit = "  " }
 formatter = { command = "slint-lsp format /dev/stdin" }
 language-servers = [ "slint-lsp" ]
+
+[[language]]
+name = "elixir"
+scope = "source.elixir"
+injection-regex = "elixir"
+file-types = ["ex", "exs"]
+roots = ["mix.exs"]
+auto-format = true
+formatter = { command = "mix format" }
+diagnostic-severity = "hint"
+comment-token = "#"
+indent = {tab-width = 2, unit = " "}
+language-servers = ["elixir-ls"]
+
+[[language]]
+name = "go"
+indent = {tab-width = 4, unit = " "}
