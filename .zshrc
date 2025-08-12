@@ -82,5 +82,6 @@ export PATH="/Users/ryanwhelchel/.config/emacs/bin:$PATH"
 # Prepending path in case a system-installed rustc needs to be overridden
 export PATH="/Users/ryanwhelchel/.local/bin/rust/bin:$PATH"
 
+export EDITOR="nvim"
 
 eval "$(direnv hook zsh)"
