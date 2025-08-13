@@ -68,15 +68,15 @@ keymap.set('n', '<S-l>', ':bn<CR>', { desc = "Go right a buffer" })
 keymap.set('n', '<leader>x', ':bd<CR>', { desc = 'E[x]it current buffer' })
 
 -- File Explorer
-keymap.set('n', '<leader>e', ':lua MiniFiles.open()<CR>', { desc = 'File [e]xplorer' })
+keymap.set('n', '<leader>n', ':lua MiniFiles.open()<CR>', { desc = 'File [e]xplorer' })
 
 -- mini.pick
-keymap.set('n', '<leader>?',  ':Pick commands<CR>', { desc = 'Find commands' })
-keymap.set('n', '<leader>fc', ':Pick colorschemes<CR>', { desc = 'Find colorschemes' })
-keymap.set('n', '<leader>ff', ':Pick files<CR>', { desc = 'Find files' })
-keymap.set('n', '<leader>fg', ':Pick grep_live<CR>', { desc = 'Find via live grep' })
-keymap.set('n', '<leader>fh', ':Pick help<CR>', { desc = 'Find help' })
-keymap.set('n', '<leader>fc', ':Pick resume<CR>', { desc = 'Continue previous find' })
+keymap.set('n', '<leader>?', ':Pick commands<CR>', { desc = 'Find commands' })
+-- keymap.set('n', '<leader>fc', ':Pick colorschemes<CR>', { desc = 'Find colorschemes' })
+-- keymap.set('n', '<leader>fc', ':Telescope colorschemes<CR>', { desc = 'Find colorschemes' })
+-- keymap.set('n', '<leader>ff', ':Pick files<CR>', { desc = 'Find files' })
+-- keymap.set('n', '<leader>fg', ':Pick grep_live<CR>', { desc = 'Find via live grep' })
+-- keymap.set('n', '<leader>fh', ':Pick help<CR>', { desc = 'Find help' })
+-- keymap.set('n', '<leader>fc', ':Pick resume<CR>', { desc = 'Continue previous find' })
 keymap.set('n', '<leader>fr', ':Pick visit_paths<CR>', { desc = 'Find recent visits' })
 -- keymap.set('n', '<leader>e', ':lua require("oil").toggle_float()<CR>', { desc = 'Open Oil' })
-

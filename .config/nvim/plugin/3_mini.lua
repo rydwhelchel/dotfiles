@@ -1,6 +1,6 @@
 local add, now, later = MiniDeps.add, MiniDeps.now, MiniDeps.later
 
--- [[ COLORS ]] 
+-- [[ COLORS ]]
 add({ source = 'sainnhe/everforest' })
 add({ source = 'rebelot/kanagawa.nvim' })
 add({ source = 'rose-pine/neovim' })
@@ -33,7 +33,7 @@ end)
 
 -- -- Mini Hues
 -- now(function()
--- 	require('mini.hues').setup({ 
+-- 	require('mini.hues').setup({
 -- 		-- -- Teal background      Orange-ish foreground
 -- 		-- background = '#02141e', foreground = '#f77923' })
 -- 		--
@@ -45,7 +45,7 @@ end)
 -- end)
 
 
--- [[ MINI PLUGINS]] 
+-- [[ MINI PLUGINS]]
 --
 -- TODO: Look into mini.snippets
 now(function()
@@ -65,7 +65,7 @@ now(function() require('mini.tabline').setup() end)
 -- Beautiful statusline
 now(function() require('mini.statusline').setup() end)
 
--- TODO: Add note entries
+-- TODO: Add note creation entries
 -- Greeter
 now(function() require('mini.starter').setup() end)
 
@@ -102,12 +102,14 @@ later(function() require('mini.visits').setup() end)
 later(function() require('mini.splitjoin').setup() end)
 
 -- Sneak/flash
-later(function() require('mini.jump2d').setup({
-  view = {
-    -- Whether to dim lines with at least one jump spot
-    dim = true,
-  }
-}) end)
+later(function()
+  require('mini.jump2d').setup({
+    view = {
+      -- Whether to dim lines with at least one jump spot
+      dim = true,
+    }
+  })
+end)
 
 -- Helpful guide showing current indent scope
 later(function() require('mini.indentscope').setup() end)
@@ -116,31 +118,33 @@ later(function() require('mini.indentscope').setup() end)
 later(function() require('mini.cursorword').setup() end)
 
 -- Easy config for moving blocks of text
-later(function() require('mini.move').setup({
-  -- Module mappings. Use `''` (empty string) to disable one.
-  mappings = {
-    -- Move visual selection in Visual mode. Defaults are Alt (Meta) + hjkl.
-    left = '<S-Tab>',
-    right = '<Tab>',
-    down = '<S-j>',
-    up = '<S-k>',
+later(function()
+  require('mini.move').setup({
+    -- Module mappings. Use `''` (empty string) to disable one.
+    mappings = {
+      -- Move visual selection in Visual mode. Defaults are Alt (Meta) + hjkl.
+      left = '<S-Tab>',
+      right = '<Tab>',
+      down = '<S-j>',
+      up = '<S-k>',
 
-    -- Move current line in Normal mode
-    line_left = '<S-Tab>',
-    line_right = '<Tab>',
-    -- line_down = '<S-j>',
-    -- line_up = '<S-k>',
-  },
+      -- Move current line in Normal mode
+      line_left = '<S-Tab>',
+      line_right = '<Tab>',
+      -- line_down = '<S-j>',
+      -- line_up = '<S-k>',
+    },
 
-  -- Options which control moving behavior
-  options = {
-    -- Automatically reindent selection during linewise vertical move
-    reindent_linewise = true,
-  },
-}) end)
+    -- Options which control moving behavior
+    options = {
+      -- Automatically reindent selection during linewise vertical move
+      reindent_linewise = true,
+    },
+  })
+end)
 
 -- Minimap
-later(function() 
+later(function()
   local map = require('mini.map')
   map.setup({
     integrations = {
@@ -185,88 +189,92 @@ later(function()
   })
 end)
 
-  -- -- Git Diff stuff, not sure about right now
-  -- later(function()
-  --   -- Default config mostly
-  --   require('mini.diff').setup({
-  --     -- Options for how hunks are visualized
-  --     view = {
-  --       -- Visualization style. Possible values are 'sign' and 'number'.
-  --       -- Default: 'number' if line numbers are enabled, 'sign' otherwise.
-  --       style = vim.go.number and 'number' or 'sign',
-  --
-  --       -- Signs used for hunks with 'sign' view
-  --       signs = { add = '+', change = '*', delete = '-' },
-  --
-  --       -- Priority of used visualization extmarks
-  --       priority = 199,
-  --     },
-  --
-  --     -- Source(s) for how reference text is computed/updated/etc
-  --     -- Uses content from Git index by default
-  --     source = nil,
-  --
-  --     -- Delays (in ms) defining asynchronous processes
-  --     delay = {
-  --       -- How much to wait before update following every text change
-  --       text_change = 200,
-  --     },
-  --
-  --     -- Module mappings. Use `''` (empty string) to disable one.
-  --     mappings = {
-  --       -- Apply hunks inside a visual/operator region
-  --       apply = 'gh',
-  --
-  --       -- Reset hunks inside a visual/operator region
-  --       reset = 'gH',
-  --
-  --       -- Hunk range textobject to be used inside operator
-  --       -- Works also in Visual mode if mapping differs from apply and reset
-  --       textobject = 'gh',
-  --
-  --       -- Go to hunk range in corresponding direction
-  --       goto_first = '[H',
-  --       goto_prev = '[h',
-  --       goto_next = ']h',
-  --       goto_last = ']H',
-  --     },
-  --
-  --     -- Various options
-  --     options = {
-  --       -- Diff algorithm. See `:h vim.diff()`.
-  --       algorithm = 'histogram',
-  --
-  --       -- Whether to use "indent heuristic". See `:h vim.diff()`.
-  --       indent_heuristic = true,
-  --
-  --       -- The amount of second-stage diff to align lines
-  --       linematch = 60,
-  --
-  --       -- Whether to wrap around edges during hunk navigation
-  --       wrap_goto = false,
-  --     },
-  --   })
-  -- end)
+-- -- Git Diff stuff, not sure about right now
+-- later(function()
+--   -- Default config mostly
+--   require('mini.diff').setup({
+--     -- Options for how hunks are visualized
+--     view = {
+--       -- Visualization style. Possible values are 'sign' and 'number'.
+--       -- Default: 'number' if line numbers are enabled, 'sign' otherwise.
+--       style = vim.go.number and 'number' or 'sign',
+--
+--       -- Signs used for hunks with 'sign' view
+--       signs = { add = '+', change = '*', delete = '-' },
+--
+--       -- Priority of used visualization extmarks
+--       priority = 199,
+--     },
+--
+--     -- Source(s) for how reference text is computed/updated/etc
+--     -- Uses content from Git index by default
+--     source = nil,
+--
+--     -- Delays (in ms) defining asynchronous processes
+--     delay = {
+--       -- How much to wait before update following every text change
+--       text_change = 200,
+--     },
+--
+--     -- Module mappings. Use `''` (empty string) to disable one.
+--     mappings = {
+--       -- Apply hunks inside a visual/operator region
+--       apply = 'gh',
+--
+--       -- Reset hunks inside a visual/operator region
+--       reset = 'gH',
+--
+--       -- Hunk range textobject to be used inside operator
+--       -- Works also in Visual mode if mapping differs from apply and reset
+--       textobject = 'gh',
+--
+--       -- Go to hunk range in corresponding direction
+--       goto_first = '[H',
+--       goto_prev = '[h',
+--       goto_next = ']h',
+--       goto_last = ']H',
+--     },
+--
+--     -- Various options
+--     options = {
+--       -- Diff algorithm. See `:h vim.diff()`.
+--       algorithm = 'histogram',
+--
+--       -- Whether to use "indent heuristic". See `:h vim.diff()`.
+--       indent_heuristic = true,
+--
+--       -- The amount of second-stage diff to align lines
+--       linematch = 60,
+--
+--       -- Whether to wrap around edges during hunk navigation
+--       wrap_goto = false,
+--     },
+--   })
+-- end)
 
-  -- Fuzzy finder
-  -- later(function()
-  --   require('mini.fuzzy').setup() 
-  --
-  --   add({
-  --     source = 'nvim-telescope/telescope.nvim',
-  --     depends = { 'nvim-lua/plenary.nvim' }
-  --   })
-  --   require('telescope').setup({
-  --     defaults = {
-  --       generic_sorter = require('mini.fuzzy').get_telescope_sorter
-  --     }
-  --   })
-  --   local builtin = require('telescope.builtin')
-  --   vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
-  --   vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
-  --   vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
-  --   vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
-  -- end)
+-- Telescope
+later(function()
+  require('mini.fuzzy').setup()
+
+  add({
+    source = 'nvim-telescope/telescope.nvim',
+    depends = { 'nvim-lua/plenary.nvim' }
+  })
+  require('telescope').setup({
+    defaults = {
+      generic_sorter = require('mini.fuzzy').get_telescope_sorter
+    }
+  })
+  local keymap = vim.keymap
+
+  local builtin = require('telescope.builtin')
+  keymap.set('n', '<leader>?', builtin.commands, { desc = 'Command help' })
+  keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Find buffers' })
+  keymap.set('n', '<leader>fc', builtin.colorscheme, { desc = 'find live grep' })
+  keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'find find files' })
+  keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'find live grep' })
+  keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'find help tags' })
+end)
 
 -- Mini's "WhichKey"
 later(function()
@@ -309,11 +317,11 @@ later(function()
     },
 
     clues = {
-      { mode = 'n', keys = '<leader>s', desc = '+Split'},
-      { mode = 'n', keys = '<leader>f', desc = '+Find'},
-      { mode = 'n', keys = '<leader>m', desc = '+Minimap'},
-      { mode = 'n', keys = '<leader>r', desc = '+Re...'},
-      { mode = 'n', keys = '<leader>t', desc = '+Toggle'},
+      { mode = 'n', keys = '<leader>s', desc = '+Split' },
+      { mode = 'n', keys = '<leader>f', desc = '+Find' },
+      { mode = 'n', keys = '<leader>m', desc = '+Minimap' },
+      { mode = 'n', keys = '<leader>r', desc = '+Re...' },
+      { mode = 'n', keys = '<leader>t', desc = '+Toggle' },
       -- Enhance this by adding descriptions for <Leader> mapping groups
       miniclue.gen_clues.builtin_completion(),
       miniclue.gen_clues.g(),
@@ -325,19 +333,20 @@ later(function()
 
     window = {
       config = { width = 50 },
-      delay = 500,
+      delay = 400,
     },
   })
 end)
 
 -- Open help & man pages in vertical split by default
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = { "help", "man" },
-    command = "wincmd L",
+  pattern = { "help", "man" },
+  command = "wincmd L",
 })
 
 -- [[ OTHER PLUGINS ]]
 --
+-- LSP
 now(function()
   add({
     source = 'neovim/nvim-lspconfig',
@@ -425,6 +434,7 @@ now(function()
 
   -- Setup the above servers
   require('mason').setup()
+  local capabilities = vim.lsp.protocol.make_client_capabilities()
   require('mason-lspconfig').setup {
     handlers = {
       function(server_name)
@@ -448,30 +458,41 @@ now(function()
         vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
       end
 
-      -- TODO: Replace with telescope.. it's just better
-      map('gd', function() require('mini.extra').pickers.lsp({ scope = "definition"}) end, '[G]oto [D]efinition')
-      map('gr', function() require('mini.extra').pickers.lsp({ scope = "references"}) end, '[G]oto [R]eferences')
-      map('gi', function() require('mini.extra').pickers.lsp({ scope = "implementation"}) end, '[G]oto [I]mplementation')
-      map('gt', function() require('mini.extra').pickers.lsp({ scope = "type_definition"}) end, '[G]oto [T]ype Definition')
-      map('gD', function() require('mini.extra').pickers.lsp({ scope = "declaration"}) end, '[G]oto [D]eclaration')
 
-      map('<leader>fs', function() require('mini.extra').pickers.lsp({ scope = "document_symbol"}) end, '[F]ind document [S]ymbols')
-      map('<leader>fS', function() require('mini.extra').pickers.lsp({ scope = "workspace_symbol"}) end, 'Workspace Symbols')
+
+      local map = function(keys, func, desc, mode)
+        mode = mode or 'n'
+        vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
+      end
+
+      -- map('gO', require('telescope.builtin').lsp_document_symbols, 'Open Document Symbols')
+      -- map('gW', require('telescope.builtin').lsp_dynamic_workspace_symbols, 'Open Workspace Symbols')
+      -- map('grt', require('telescope.builtin').lsp_type_definitions, '[G]oto [T]ype Definition')
+
+      local telescope = require('telescope.builtin')
+      map('gd', telescope.lsp_definitions, 'Goto Definition')
+      map('gr', telescope.lsp_references, 'Goto References')
+      map('gi', telescope.lsp_implementations, 'Goto Implementation')
+      map('gt', telescope.lsp_type_definitions, 'Goto Type Definition')
+      map('gD', vim.lsp.buf.declaration, 'Goto Declaration')
+
+      map('<leader>fs', telescope.lsp_document_symbols, '[F]ind document [S]ymbols')
+      map('<leader>fS', telescope.lsp_dynamic_workspace_symbols, 'Workspace Symbols')
+
+      -- TODO: See if there's a way to show diagnostics in current buffer vs diagnostics in project
       map(
-        '<leader>fe',
-        function() require('mini.extra').pickers.diagnostic({ scope = "current" }) end,
-        'Find errors'
-      )
-      map(
-        '<leader>fE',
-        function() require('mini.extra').pickers.diagnostic({ scope = "all" }) end,
-        'Find errors in project'
+        '<leader>fd',
+        telescope.diagnostics,
+        'Find diagnostics'
       )
 
-      -- map('<leader>d', vim.diagnostic.open_float, 'View diagnostic')
       map('[d', vim.diagnostic.goto_prev, 'Go to previous Diagnostic')
       map(']d', vim.diagnostic.goto_next, 'Go to next Diagnostic')
-      map('<leader>d', vim.diagnostic.open_float, 'Show Diagnostic')
+      map('<leader>e', function()
+        vim.diagnostic.open_float({
+          border = 'single',
+        })
+      end, 'Show Diagnostic')
       map('<leader>rn', vim.lsp.buf.rename, 'Rename')
       map('<leader>rs', ':LspRestart<CR>', 'Restart')
       map('<leader>a', vim.lsp.buf.code_action, 'Code Action', { 'n', 'x' })
@@ -518,6 +539,46 @@ now(function()
   })
 end)
 
+-- formatter
+later(function()
+  add('stevearc/conform.nvim')
+  local conform = require 'conform'
+
+  conform.setup {
+    formatters_by_ft = {
+      javascript = { 'prettier' },
+      typescript = { 'prettier' },
+      javascriptreact = { 'prettier' },
+      typescriptreact = { 'prettier' },
+      svelte = { 'prettier' },
+      css = { 'prettier' },
+      html = { 'prettier' },
+      json = { 'prettier' },
+      yaml = { 'prettier' },
+      markdown = { 'prettier' },
+      graphql = { 'prettier' },
+      liquid = { 'prettier' },
+      python = { 'isort', 'black' },
+      nix = { "nixfmt" },
+    },
+    format_on_save = {
+      lsp_fallback = true,
+      async = false,
+      timeout_ms = 1000,
+    },
+  }
+
+  -- Don't think I care about this
+  vim.keymap.set({ 'n', 'v' }, '<leader>mp', function()
+    conform.format {
+      lsp_fallback = true,
+      async = false,
+      timeout_ms = 1000,
+    }
+  end, { desc = 'Format file or range (in visual mode)' })
+end)
+
+-- TreeSitter
 later(function()
   add({
     source = 'nvim-treesitter/nvim-treesitter',
@@ -564,6 +625,7 @@ later(function()
   })
 end)
 
+-- TODO Comments
 later(function()
   add({
     source = "folke/todo-comments.nvim",
