@@ -52,27 +52,5 @@ opt.inccommand = 'split'
 -- Minimal number of screen lines to keep above and below the cursor.
 opt.scrolloff = 10
 
--- [[ AUTOCOMMANDS ]]
-local autocmd = vim.api.nvim_create_autocmd
-local augroup = vim.api.nvim_create_augroup
--- Open help & man pages in vertical split by default
-autocmd("FileType", {
-  pattern = { "help", "man" },
-  command = "wincmd L",
-})
-
--- Highlight yanked text
-local highlight_group = augroup('YankHighlight', { clear = true })
-autocmd('TextYankPost', {
-    pattern = '*',
-    callback = function()
-        vim.highlight.on_yank({ timeout = 170 })
-    end,
-    group = highlight_group,
-})
-
-
-
 -- [[ Graveyard ]]
 -- opt.relativenumber = true -- Relative line numbers
-

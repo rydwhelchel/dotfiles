@@ -2,3 +2,12 @@ font-family = Berkeley Mono
 font-feature = liga
 font-size = 22
 theme = tokyonight_night
+
+# Make split control always super+alt
+keybind = super+alt+equal=equalize_splits
+keybind = super+alt+l=goto_split:right
+keybind = super+alt+j=goto_split:down
+keybind = super+alt+h=goto_split:left
+keybind = super+alt+k=goto_split:up
+keybind = super+alt+r=new_split:right
+keybind = super+alt+d=new_split:down

@@ -3,6 +3,8 @@
         "vim",
         "MiniDeps",
         "MiniMap",
-        "capabilities"
+        "capabilities",
+        "now",
+        "Snacks"
     ]
 }
