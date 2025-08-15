@@ -122,9 +122,8 @@ later(function()
     clues = {
       { mode = 'n', keys = '<leader>s', desc = '+Split' },
       { mode = 'n', keys = '<leader>f', desc = '+Find' },
-      { mode = 'n', keys = '<leader>m', desc = '+Minimap' },
       { mode = 'n', keys = '<leader>r', desc = '+Re...' },
-      { mode = 'n', keys = '<leader>t', desc = '+Toggle' },
+      { mode = 'n', keys = '<leader>t', desc = '+Notes' },
       -- Enhance this by adding descriptions for <Leader> mapping groups
       miniclue.gen_clues.builtin_completion(),
       miniclue.gen_clues.g(),
@@ -193,6 +192,16 @@ later(function()
   todo_comments.setup()
 end)
 
--- TODO: Add indent scope snack
--- TODO: Autopairs (or just stick with mini? should I just ditch autopairs completely?)
+later(function()
+  add({
+    source = 'MeanderingProgrammer/render-markdown.nvim',
+    -- Note that mini is optional, can change if I move away from mini
+    depends = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' }
+  })
 
+  require('render-markdown').setup({
+    completions = { blink = { enabled = true } },
+  })
+end)
+
+-- TODO: Add indent scope snack

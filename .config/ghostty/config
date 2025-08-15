@@ -11,3 +11,7 @@ keybind = super+alt+h=goto_split:left
 keybind = super+alt+k=goto_split:up
 keybind = super+alt+r=new_split:right
 keybind = super+alt+d=new_split:down
+
+keybind = super+shift+h=resize_split:left,10
+keybind = super+shift+l=resize_split:right,10
+

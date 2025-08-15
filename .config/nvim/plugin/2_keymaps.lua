@@ -13,11 +13,11 @@ keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>', { desc = 'Clear search highlight
 -- [[ Splits ]]
 keymap.set('n', '<leader>sc', '<C-w>q', { desc = 'Closes current split' })
 keymap.set('n', '<leader>se', '<C-w>=', { desc = 'Equalize split size' })
-keymap.set('n', '<leader>sh', '<C-w>s', { desc = 'Split window horizontally' })
+keymap.set('n', '<leader>sd', '<C-w>s', { desc = 'Split window (down)' })
 keymap.set('n', '<leader>sj', '<C-w>-', { desc = 'Make split shorter' })
 keymap.set('n', '<leader>sk', '<C-w>+', { desc = 'Make split taller' })
 keymap.set('n', '<leader>ss', '<C-w><', { desc = 'Shrink split (horizontally)' })
-keymap.set('n', '<leader>sv', '<C-w>v', { desc = 'Split window vertically' })
+keymap.set('n', '<leader>sv', '<C-w>v', { desc = 'Split window (right)' })
 keymap.set('n', '<leader>sw', '<C-w>>', { desc = 'Widen split' })
 keymap.set('n', '<leader>sx', '<C-w>q', { desc = 'Exit split' })
 
@@ -40,6 +40,23 @@ keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window'
 keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
+-- Pipe selection and insert output from helix
+vim.keymap.set('x', '<leader>\\', function()
+  vim.ui.input({ prompt = "Filter selection through: " }, function(input)
+    if input and #input > 0 then
+      local escaped = vim.fn.shellescape(input)
+      vim.cmd(string.format("'<,'>!%s", escaped))
+    end
+  end)
+end, { desc = 'Replace selection with shell command output' })
+keymap.set('x', '<leader>|', function() vim.ui.input({ prompt = "Pipe selection to shell command: " }, function(input)
+  if input and #input > 0 then
+    local escaped = vim.fn.shellescape(input)
+    local cmd = string.format("'<,'>w !%s", escaped)
+    vim.cmd(cmd)
+  end
+end) end, { desc = 'Pipe selection to shell command' })
+
 -- [[ Buffer ]]
 keymap.set('n', '<S-h>', ':bp<CR>', { desc = "Go left a buffer" })
 keymap.set('n', '<S-l>', ':bn<CR>', { desc = "Go right a buffer" })
@@ -48,6 +65,9 @@ keymap.set('n', '<leader>x', ':bd<CR>', { desc = 'Exit current buffer' })
 
 -- File Explorer
 keymap.set('n', '<leader>n', function() Snacks.explorer() end, { desc = 'File explorer' })
+
+-- LazyGit
+keymap.set('n', '<leader>lg', function() Snacks.lazygit.open() end, { desc = 'File explorer' })
 
 -- [[ LSP ]]
 keymap.set('n', '<leader>e', function() vim.diagnostic.open_float({ border = 'single' }) end, { desc = 'Code action'})

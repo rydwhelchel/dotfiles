@@ -70,3 +70,20 @@ later(function()
     highlight = { enable = true },
   })
 end)
+
+-- Completion - Blink
+add({
+  source = "saghen/blink.cmp",
+  depends = { "rafamadriz/friendly-snippets" },
+  checkout = "v1.6.0", -- check releases for latest tag
+})
+later(function()
+  require('blink.cmp').setup({
+    keymap = {
+      ['<C-k>'] = { 'select_prev', 'fallback' },
+      ['<C-j>'] = { 'select_next', 'fallback' },
+      ['<enter>'] = { 'accept', 'fallback' },
+    }
+  })
+end)
+
