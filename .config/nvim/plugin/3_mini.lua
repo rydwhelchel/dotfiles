@@ -78,6 +78,13 @@ later(function()
   })
 end)
 
+-- Autopairs
+later(function()
+  add({ source = "windwp/nvim-autopairs" })
+  require('nvim-autopairs').setup()
+end)
+
+
 -- TODO: Review keys defined to see if they match this new setup
 -- Mini's "WhichKey"
 later(function()

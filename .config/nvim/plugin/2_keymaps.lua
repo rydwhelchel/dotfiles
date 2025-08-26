@@ -11,7 +11,6 @@ keymap.set('c', 'W', 'w')
 keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>', { desc = 'Clear search highlights' })
 
 -- [[ Splits ]]
-keymap.set('n', '<leader>sc', '<C-w>q', { desc = 'Closes current split' })
 keymap.set('n', '<leader>se', '<C-w>=', { desc = 'Equalize split size' })
 keymap.set('n', '<leader>sd', '<C-w>s', { desc = 'Split window (down)' })
 keymap.set('n', '<leader>sj', '<C-w>-', { desc = 'Make split shorter' })
