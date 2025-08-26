@@ -2,3 +2,6 @@
 .config/fish/
 .config/helix/runtime
 .vim/.netrwhist
+.config/go/
+.config/lazygit/
+.config/uv/

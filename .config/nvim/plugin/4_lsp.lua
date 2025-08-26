@@ -54,6 +54,7 @@ later(function()
       'javadoc',
       'javascript',
       'kotlin',
+      'latex',
       'lua',
       'markdown',
       'ocaml',
@@ -64,7 +65,8 @@ later(function()
       'sql',
       'svelte',
       'typescript',
-      'vimdoc'
+      'vimdoc',
+      'yaml'
     },
     auto_install = true,
     highlight = { enable = true },

@@ -60,7 +60,10 @@ alias carp='cargo px'
 export PATH="$PATH:/opt/nvim-linux64/bin"
 export PATH=~/bin:$PATH
 export PATH=/home/rdub/.cache/rebar3/bin:$PATH
+# GoPls directory (and potentially other `go install`s
 export PATH=~/go/bin:$PATH
+# Go install location
+export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:~/zig/zig-0.14.1
 export PATH=$PATH:~/zig/zls-0.14.0
 # export PATH=$PATH:~/zig/zig-0.15.0-DEV

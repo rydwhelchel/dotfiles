@@ -3,3 +3,6 @@
 # Please adapt and uncomment the following lines:
 	name = Ryan Whelchel
 	email = rydwhelchel@gmail.com
+
+[core]
+  editor = nvim
