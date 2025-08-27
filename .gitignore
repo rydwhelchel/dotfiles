@@ -1,6 +1,4 @@
 .DS_Store
-.config/fish/
-.config/helix/runtime
 .vim/.netrwhist
 .config/go/
 .config/lazygit/
