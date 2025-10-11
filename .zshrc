@@ -64,9 +64,13 @@ export PATH=/home/rdub/.cache/rebar3/bin:$PATH
 export PATH=~/go/bin:$PATH
 # Go install location
 export PATH=$PATH:/usr/local/go/bin
-export PATH=$PATH:~/zig/zig-0.14.1
-export PATH=$PATH:~/zig/zls-0.14.0
-# export PATH=$PATH:~/zig/zig-0.15.0-DEV
+
+# ~~ Zig ~~
+## Zig
+export PATH=$PATH:~/zig/zig-0.15.1
+## Zig language server
+export PATH=$PATH:~/zig/zls-0.15.0
+
 export PATH=$HOME//opt/homebrew/Cellar/erlang/27.3/lib/erlang/erts-15.2.3/bin:$PATH
 export PATH=$HOME//opt/homebrew/bin:$PATH
 

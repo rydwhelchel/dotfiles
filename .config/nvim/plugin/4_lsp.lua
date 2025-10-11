@@ -16,9 +16,9 @@ vim.lsp.enable('pyright')
 vim.lsp.enable('marksman')
 
 vim.lsp.config('luals', {
-  cmd = {'lua-language-server'},
-  filetypes = {'lua'},
-  root_markers = {'.luarc.json', '.luarc.jsonc'},
+  cmd = { 'lua-language-server' },
+  filetypes = { 'lua' },
+  root_markers = { '.luarc.json', '.luarc.jsonc' },
 })
 vim.lsp.enable('luals')
 
@@ -89,3 +89,17 @@ later(function()
   })
 end)
 
+-- Formatting - Conform.nvim (replace if needed later)
+add({
+  source = "stevearc/conform.nvim"
+})
+-- TODO: Add list of formatters per language
+later(function()
+  require('conform').setup({
+    format_on_save = {
+      -- These options will be passed to conform.format()
+      timeout_ms = 500,
+      lsp_format = "fallback",
+    }
+  })
+end)
