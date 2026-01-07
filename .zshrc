@@ -1,3 +1,5 @@
+# NOTE: Prob delete this soon, migrating to bash
+#
 # Open zellij
 # eval "$(zellij setup --generate-auto-start zsh)"
 

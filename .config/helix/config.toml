@@ -71,4 +71,4 @@ x = "wclose"
 # [L]azy mode
 [keys.normal.space.l]
 g = [":new", ":insert-output lazygit", ":buffer-close!", ":redraw", ":reload-all"]
- 
+

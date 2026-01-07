@@ -20,6 +20,18 @@ formatter = { command = "slint-lsp format /dev/stdin" }
 language-servers = [ "slint-lsp" ]
 
 [[language]]
+name = "lua"
+file-types = ["lua", "p8"] # Add p8 to the existing lua language
+
+[language-server.pico8-dummy]
+command = "true" # A dummy server that does nothing
+
+[[language]]
+name = "lua"
+file-types = ["p8"]
+language-servers = [] # This will prevent lua-ls from starting on .p8 files
+
+[[language]]
 name = "elixir"
 scope = "source.elixir"
 injection-regex = "elixir"
