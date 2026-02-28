@@ -29,3 +29,5 @@
 [user]
 	name = Ryan Whelchel
 	email = rydwhelchel@gmail.com
+[core]
+	excludesfile = /home/rydwhelchel/.gitignore_global
