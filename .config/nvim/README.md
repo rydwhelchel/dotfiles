@@ -135,6 +135,7 @@ programs.neovim = {
 | nixd | Nix | nixfmt formatting |
 | zls | Zig | |
 | elmls | Elm | |
+| ocamllsp | OCaml | ocamlformat |
 
 ## Adding a New LSP Server
 

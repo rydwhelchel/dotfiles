@@ -109,6 +109,7 @@ return {
         markdown = { "prettierd" },
         nix = { "nixfmt" },
         elm = { "elm_format" },
+        ocaml = { "ocamlformat" },
         -- Elixir/Phoenix
         elixir = { "mix" },
         heex = { "mix" },
@@ -272,6 +273,9 @@ return {
 
         -- Elm
         elmls = {},
+
+        -- OCaml
+        ocamllsp = {},
       }
 
       -- Setup each server using vim.lsp.config API
@@ -315,6 +319,8 @@ return {
               config.root_markers = { "build.zig", "zls.json", ".git" }
             elseif server_name == "elmls" then
               config.root_markers = { "elm.json", ".git" }
+            elseif server_name == "ocamllsp" then
+              config.root_markers = { "dune-project", "dune", ".opam", "*.opam", ".git" }
             elseif server_name == "elixirls" then
               config.root_markers = { "mix.exs", ".git" }
             elseif server_name == "marksman" then
