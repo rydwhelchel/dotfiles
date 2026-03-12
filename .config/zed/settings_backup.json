@@ -1,0 +1,22 @@
+{
+  "edit_predictions": {
+    "mode": "subtle",
+  },
+  "disable_ai": false,
+  "features": {
+    "edit_prediction_provider": "zed",
+  },
+  "file_types": {
+    "HTML": ["**/*.gohtml"],
+  },
+  "which_key": { "enabled": true },
+  "theme": "Ayu Dark",
+  "vim_mode": true,
+  "ui_font_size": 18,
+  "buffer_font_size": 16.0,
+  "ui_font_family": "JetBrains Mono",
+  "buffer_font_family": "JetBrains Mono",
+  "autosave": "on_focus_change",
+  "cursor_blink": false,
+  "vertical_scroll_margin": 8,
+}

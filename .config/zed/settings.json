@@ -1,17 +1,42 @@
 {
-  "features": {
-    "edit_prediction_provider": "zed"
+  "lsp_document_colors": "inlay",
+  "inlay_hints": {
+    "show_background": false,
+    "enabled": true
   },
+  "icon_theme": "Zed (Default)",
+  "git_panel": {
+    "dock": "left",
+  },
+  "outline_panel": {
+    "dock": "right",
+  },
+  "show_edit_predictions": true,
+  "when_closing_with_no_tabs": "platform_default",
+  "agent": {
+    "favorite_models": [],
+    "model_parameters": [],
+    "message_editor_min_lines": 5,
+  },
+  "edit_predictions": {
+    "provider": "zed",
+    "mode": "eager",
+  },
+  "disable_ai": false,
   "file_types": {
-    "HTML": ["**/*.gohtml"]
+    "HTML": ["**/*.gohtml"],
   },
-  "theme": "Ayu Dark",
+  "which_key": {
+    "enabled": true,
+    "delay_ms": 200,
+  },
+  "theme": "Snazzy Theme - blurred",
   "vim_mode": true,
-  "ui_font_size": 18,
-  "buffer_font_size": 20,
+  "ui_font_size": 18.0,
+  "buffer_font_size": 16.0,
   "ui_font_family": "JetBrains Mono",
   "buffer_font_family": "JetBrains Mono",
   "autosave": "on_focus_change",
   "cursor_blink": false,
-  "vertical_scroll_margin": 8
+  "vertical_scroll_margin": 8,
 }
