@@ -24,6 +24,9 @@
       // [G]o to [R]eferences
       "g r": "editor::FindAllReferences",
 
+      "leader d": "diagnostics::DeployCurrentFile",
+      "leader D": "diagnostics::Deploy",
+
       "shift-h": "pane::ActivatePreviousItem",
       "shift-l": "pane::ActivateNextItem",
       // Would be nice to figure out if I can make it auto swap to previously active

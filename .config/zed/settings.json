@@ -1,4 +1,7 @@
 {
+  "calls": {
+    "mute_on_join": true
+  },
   "lsp_document_colors": "inlay",
   "inlay_hints": {
     "show_background": false,
@@ -22,7 +25,7 @@
     "provider": "zed",
     "mode": "eager",
   },
-  "disable_ai": false,
+  "disable_ai": true,
   "file_types": {
     "HTML": ["**/*.gohtml"],
   },
@@ -30,7 +33,7 @@
     "enabled": true,
     "delay_ms": 200,
   },
-  "theme": "Snazzy Theme - blurred",
+  "theme": "Catppuccin Espresso (Blur) - High Contrast Borders",
   "vim_mode": true,
   "ui_font_size": 18.0,
   "buffer_font_size": 16.0,
